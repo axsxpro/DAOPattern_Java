@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.DAO.ArticleDAO;
+import org.example.Entity.Article;
+import org.example.Services.DAOFactory;
+
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
@@ -14,8 +18,11 @@ public class Main {
             try {
 
                 // Création d'une instance de ArticleDAO et récupération des articles
-                ArticleDAO articleDAO = new ArticleDAO();
-                Map<Integer, Article> tableArticle = articleDAO.findAll();
+
+                Map<Integer, Article> tableArticle = DAOFactory.getArticleDAO().findAll();
+
+//                ArticleDAO articleDAO = (ArticleDAO) DAOFactory.getArticleDAO();
+//                Map<Integer, Article> tableArticle = articleDAO.findAll();
 
                 // Itérer à travers les articles pour les afficher
                 for (Article article : tableArticle.values()) {

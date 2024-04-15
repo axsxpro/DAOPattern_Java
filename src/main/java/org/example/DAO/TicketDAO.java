@@ -1,4 +1,9 @@
-package org.example;
+package org.example.DAO;
+
+import org.example.Entity.Ticket;
+import org.example.Services.DAOFactory;
+import org.example.Services.GenericDAO;
+import org.example.Services.StoredProcedure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,13 +13,14 @@ import java.util.Map;
 
 public class TicketDAO implements GenericDAO<Ticket> {
 
+
     private StoredProcedure StoredProcedure;
     private static Map<Integer, Ticket> arrayTicket = new HashMap<>();
 
 
-    public TicketDAO() throws SQLException {
+    public TicketDAO(StoredProcedure storedProcedure) {
 
-        this.StoredProcedure = new StoredProcedure();
+        this.StoredProcedure = storedProcedure;
     }
 
 

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Entity;
 
 
 public class Pays {
@@ -7,7 +7,6 @@ public class Pays {
     // Propriétés de la classe Pays
     private int idPays;
     private String nomPays;
-
     private Continent idContinent;
 
     // Constructeur

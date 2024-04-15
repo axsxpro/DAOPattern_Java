@@ -1,4 +1,6 @@
-package org.example;
+package org.example.Services;
+
+import org.example.Entity.*;
 
 import java.sql.*;
 
@@ -7,10 +9,10 @@ public class StoredProcedure {
 
     private final Connection connection;
 
-    //constructeur
-    public StoredProcedure() throws SQLException {
+    // Constructeur
+    public StoredProcedure(Connection connection) {
 
-        this.connection = Database.connectionToDB();
+        this.connection = connection;
     }
 
 
@@ -213,7 +215,6 @@ public class StoredProcedure {
 
         return callableStatement.executeUpdate();
     }
-
 
 
 }

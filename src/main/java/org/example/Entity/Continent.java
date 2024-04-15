@@ -1,4 +1,5 @@
-package org.example;
+package org.example.Entity;
+
 
 public class Continent {
 

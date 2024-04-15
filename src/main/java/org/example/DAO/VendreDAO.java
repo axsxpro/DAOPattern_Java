@@ -1,4 +1,10 @@
-package org.example;
+package org.example.DAO;
+
+import org.example.Entity.Article;
+import org.example.Entity.Vendre;
+import org.example.Services.DAOFactory;
+import org.example.Services.GenericDAO;
+import org.example.Services.StoredProcedure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,12 +13,14 @@ import java.util.Map;
 
 public class VendreDAO implements GenericDAO<Vendre> {
 
+
     private StoredProcedure StoredProcedure;
     private static Map<Integer, Vendre> arrayVendre = new HashMap<>();
 
-    public VendreDAO() throws SQLException {
 
-        this.StoredProcedure = new StoredProcedure();
+    public VendreDAO(StoredProcedure storedProcedure) {
+
+        this.StoredProcedure = storedProcedure;
     }
 
     @Override

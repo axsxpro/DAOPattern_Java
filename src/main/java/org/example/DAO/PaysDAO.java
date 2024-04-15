@@ -1,4 +1,10 @@
-package org.example;
+package org.example.DAO;
+
+import org.example.Entity.Continent;
+import org.example.Entity.Pays;
+import org.example.Services.DAOFactory;
+import org.example.Services.GenericDAO;
+import org.example.Services.StoredProcedure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,12 +13,12 @@ import java.util.Map;
 
 public class PaysDAO implements GenericDAO<Pays> {
 
+
     private StoredProcedure StoredProcedure;
 
-    public PaysDAO() throws SQLException {
+    public PaysDAO(StoredProcedure storedProcedure) {
 
-        this.StoredProcedure = new StoredProcedure();
-
+        this.StoredProcedure = storedProcedure;
     }
 
 

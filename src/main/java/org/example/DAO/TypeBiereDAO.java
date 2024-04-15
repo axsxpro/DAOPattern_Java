@@ -1,4 +1,8 @@
-package org.example;
+package org.example.DAO;
+
+import org.example.Entity.TypeBiere;
+import org.example.Services.GenericDAO;
+import org.example.Services.StoredProcedure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,10 +14,9 @@ public class TypeBiereDAO implements GenericDAO<TypeBiere> {
 
     private StoredProcedure StoredProcedure;
 
+    public TypeBiereDAO(StoredProcedure storedProcedure) {
 
-    public TypeBiereDAO() throws SQLException {
-
-        this.StoredProcedure = new StoredProcedure();
+        this.StoredProcedure = storedProcedure;
     }
 
 

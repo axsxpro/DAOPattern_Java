@@ -1,8 +1,8 @@
-package org.example;
-
+package org.example.Services;
 
 import java.sql.SQLException;
 import java.util.Map;
+
 
 public interface  GenericDAO<T> {
 

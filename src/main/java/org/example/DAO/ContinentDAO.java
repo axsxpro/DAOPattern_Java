@@ -1,4 +1,8 @@
-package org.example;
+package org.example.DAO;
+
+import org.example.Entity.Continent;
+import org.example.Services.GenericDAO;
+import org.example.Services.StoredProcedure;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,13 +11,33 @@ import java.util.Map;
 
 public class ContinentDAO implements GenericDAO<Continent> {
 
+
     private StoredProcedure StoredProcedure;
 
-    public ContinentDAO() throws SQLException {
+    public ContinentDAO(StoredProcedure storedProcedure) {
 
-        this.StoredProcedure = new StoredProcedure();
+        this.StoredProcedure = storedProcedure;
     }
 
+
+    @Override
+    public Continent create(Continent continent) {
+
+        try {
+
+            StoredProcedure.procedureCreate("{call createContinent(?)}",
+
+                    continent.getNomContinent()
+            );
+
+            return continent;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    
     @Override
     public Continent findById(int id) {
 
@@ -32,23 +56,6 @@ public class ContinentDAO implements GenericDAO<Continent> {
             e.printStackTrace();
         }
         return null;
-    }
-
-    @Override
-    public Continent create(Continent continent) {
-
-        try {
-
-            StoredProcedure.procedureCreate("{call createContinent(?)}",
-
-                    continent.getNomContinent()
-            );
-
-            return continent;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 
@@ -75,7 +82,6 @@ public class ContinentDAO implements GenericDAO<Continent> {
     public void delete(int id) {
 
         try {
-
 
             StoredProcedure.procedureDeleteById("{call deleteContinentById(?)}", id);
 
